@@ -1,4 +1,4 @@
-# Method 1
+# Install Required Packages
 
 1. Check for which repos are enabled. 
 ```
@@ -20,3 +20,62 @@ yum update -y && yum install -y python3-pip
 ```
 ansible --version
 ```
+
+# Create a static host inventory file
+Refer to `/etc/ansible/hosts` file for example for inventory file
+
+Default template of inventory file: 
+```
+
+```
+
+
+
+
+
+
+# Create a configuration file
+`cat /path/to/folder/ansible.cfg`
+
+
+
+Default template of `ansible.cfg` : 
+```
+[defaults]
+inventory=inventory
+
+[privilege_escalation]
+```
+
+
+
+
+
+
+
+
+
+
+# Create and use static inventories to define groups of hosts
+`cat /path/to/folder/inventory`
+
+
+Default template of inventory : 
+```
+[servers]
+server1.example.com
+server2.example.com
+
+[webservers]
+server3.example.com
+server4.example.com
+
+[allservers:children]
+servers
+webservers
+```
+
+
+
+
+# Manage parallelism
